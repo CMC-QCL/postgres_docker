@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  postgres:
+    image: postgres
+    hostname: postgres
+    ports:
+      - "$PORT:5432"
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
+    volumes:
+      - ./postgres/postgres.conf:/usr/local/etc/postgres/postgres.conf
+      - ./postgres/data:/var/lib/postgresql/data
+    restart: unless-stopped
+volumes:
+  postgres-data:
