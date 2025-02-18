@@ -80,3 +80,17 @@ Please fill out following information on `Create-Server` window:
   * `Password`: `$POSGRES_PASSWORD` value from Section 1
 
 After you have saved the above properties, you should be able to access postgreSQL server from pgAdmin client.
+
+# Using NVIDIA GPUs with Rootless Docker
+
+First, verify that GPUs are available by running `nvidia-smi`.
+
+Second, pull and run NVIDIA's GPU image by running `docker run -it --gpus all nvidia/cuda:11.4.0-base-ubuntu20.04 nvidia-smi`. If this command fails, ensure that the system is not trying to use `cgroups`. To do so, add 
+```
+[nvidia-container-cli]
+no-cgroups = true
+```
+to `/etc/nvidia-container-runtime/config.toml`.
+
+
+Once this command runs successfully, you can use a container interactively by running `docker run -it --gpus all nvidia/cuda:11.4.0-base-ubuntu20.04 sh` or build your own image from this base to execute.
