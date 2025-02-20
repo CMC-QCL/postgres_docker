@@ -94,3 +94,9 @@ to `/etc/nvidia-container-runtime/config.toml`.
 
 
 Once this command runs successfully, you can use a container interactively by running `docker run -it --gpus all nvidia/cuda:11.4.0-base-ubuntu20.04 sh` or build your own image from this base to execute.
+
+# Using NVIDIA GPUs on QCL Machine
+
+# Using NVIDIA GPUs on Single Node Laguna Cluster
+
+# Using NVIDIA GPUs on Multiple Nodes Laguna Cluster
