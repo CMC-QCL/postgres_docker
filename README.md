@@ -120,5 +120,25 @@ To start an interactive single-node session on the Laguna Cluster, open a termin
 
 To submit a single-node GPU job, first create a new job in the Job Composer interface. This will create a dedicated directory in your user folder for the job where all assets for the job should be kept and where all job output will be placed. It is not important for this example that a certain job template be used; we will overwrite the files it creates.
 
+The following template for `job.sh` (which should be placed in the job directory) will create a 36 hour job on a single node with 2 GPUs using all the node's available memory that runs `my_script.py` using the `<your_environment>` in conda. `my_script.py` should be in the job directory.
+```
+#!/bin/bash
+
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:l40s:2
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=0
+#SBATCH --time=36:00:00
+
+module purge
+module load gcc/13.3.0
+module load openmpi/5.0.5
+module load cuda/12.6.3
+
+~/.conda/envs/<your_environment>/bin/python3 my_script.py
+```
+
 # Using NVIDIA GPUs on Multiple Nodes Laguna Cluster
 
