@@ -116,7 +116,7 @@ with strategy.scope():
 To use specific GPUs, change the first line to `strategy = tf.distribute.MirroredStrategy(["/GPU:0", "/GPU:1"])`, specifying the indices of the specific GPUs instead of `0` or `1` (valid values for the QCL GPU machine are `"/GPU:0"`, `"/GPU:1"`, `"/GPU:2"`, `"/GPU:3"`.
 
 # Using NVIDIA GPUs on Single Node Laguna Cluster
-
+To start an interactive single-node session on the Laguna Cluster, open a terminal through the web interface or by ssh and run `salloc --partition=gpu --gres=gpu:l40s:2 --nodes=1 --ntasks=1 --cpus-per-task=2 --time=2:00:00 --mem=0`. This allocates one node with two GPUs for 2 hours with the maximum memory allowed. Scripts can then be run inside this terminal as they would on the QCL GPU machine.
 
 # Using NVIDIA GPUs on Multiple Nodes Laguna Cluster
 
