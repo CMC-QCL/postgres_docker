@@ -118,5 +118,7 @@ To use specific GPUs, change the first line to `strategy = tf.distribute.Mirrore
 # Using NVIDIA GPUs on Single Node Laguna Cluster
 To start an interactive single-node session on the Laguna Cluster, open a terminal through the web interface or by ssh and run `salloc --partition=gpu --gres=gpu:l40s:2 --nodes=1 --ntasks=1 --cpus-per-task=2 --time=2:00:00 --mem=0`. This allocates one node with two GPUs for 2 hours with the maximum memory allowed. Scripts can then be run inside this terminal as they would on the QCL GPU machine.
 
+To submit a single-node GPU job, first create a new job in the Job Composer interface. This will create a dedicated directory in your user folder for the job where all assets for the job should be kept and where all job output will be placed. It is not important for this example that a certain job template be used; we will overwrite the files it creates.
+
 # Using NVIDIA GPUs on Multiple Nodes Laguna Cluster
 
