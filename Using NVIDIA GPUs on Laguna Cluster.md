@@ -23,5 +23,23 @@ module load cuda/12.6.3
 ~/.conda/envs/<your_environment>/bin/python3 my_script.py
 ```
 
+```python
+# example my_script.py
+
+import tensorflow as tf
+
+strategy = tf.distribute.MirroredStrategy()
+
+with strategy.scope():
+    a = tf.constant([1.0, 2.0, 3.0])
+    b = tf.constant([4.0, 5.0, 6.0])
+    c = a + b
+    print(c.numpy()) # should print [5. 7. 9.]
+
+    with open("./outfile.txt", "w") as doc:
+        doc.write(str(c.numpy())) # should output to <your_job_folder>/outfile.txt
+
+```
+
 # Using NVIDIA GPUs on Multiple Nodes Laguna Cluster
 
