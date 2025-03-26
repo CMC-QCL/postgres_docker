@@ -28,5 +28,5 @@ with strategy.scope():
     a = tf.constant([1.0, 2.0, 3.0])
     b = tf.constant([4.0, 5.0, 6.0])
     c = a + b
-    print(c.numpy())
+    print(c.numpy()) # should print [5.0 7.0 9.0]
 ```
